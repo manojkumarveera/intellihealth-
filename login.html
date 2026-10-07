@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>IntelliHealth 360 · Secure 9-Digit Unique Health ID Authentication</title>
+  <meta name="description" content="Secure login portal for IntelliHealth 360 using 9-digit Unique Health ID (UHID/ABHA), multi-factor authentication, and role-based access control.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-page-body">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-wrapper">
+        <div class="brand-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title">
+            IntelliHealth <span style="color: var(--brand-cyan);">360</span>
+            <span class="brand-badge">PORTAL AUTH</span>
+          </div>
+          <span class="brand-subtitle">Panimalar Engineering College · Department of IT</span>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <a href="index.html" class="btn btn-secondary" style="font-size: 13px; padding: 8px 14px;">
+          ← Return to Diagnostic Console
+        </a>
+        <button id="theme-toggle" class="btn-icon" title="Toggle Theme (Dark / Light)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Main Grid -->
+  <main class="login-container">
+    <div class="login-grid">
+
+      <!-- Left Column: Branding, Research Context & Compliance Badges -->
+      <div class="login-brand-side">
+        <div class="hero-pill-badge" style="margin-bottom: 0;">
+          <span class="hero-pill-dot"></span>
+          <span>SECTION VIII · SECURE LOGIN & RBAC VAULT</span>
+        </div>
+
+        <h1 style="font-size: 38px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02em;">
+          Unified Health Records. <br>
+          <span class="gradient-text">Authenticated by 9-Digit Unique ID.</span>
+        </h1>
+
+        <p style="font-size: 15px; color: var(--text-secondary); line-height: 1.6;">
+          IntelliHealth 360 enforces zero-trust identity verification conforming to India's <strong>DPDP Act 2023</strong>, <strong>ABDM (Ayushman Bharat)</strong> standards, and <strong>HL7 FHIR R4</strong> security specs. Access longitudinal clinical dossiers, live ECG streams, and Explainable AI models using your 9-digit Unique Health Identifier.
+        </p>
+
+        <!-- Compliance & Security Micro-Grid -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px;">
+          <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 12px 14px; border-radius: var(--radius-md);">
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--brand-cyan); font-weight: 700;">Zero-Trust Encryption</div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 2px;">TLS 1.3 & AES-256 Vault</div>
+          </div>
+          <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 12px 14px; border-radius: var(--radius-md);">
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--brand-emerald); font-weight: 700;">Role-Based Access</div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 2px;">Least-Privilege RBAC</div>
+          </div>
+          <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 12px 14px; border-radius: var(--radius-md);">
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--brand-purple); font-weight: 700;">Audit Traceability</div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 2px;">Immutable Log Stream</div>
+          </div>
+          <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); padding: 12px 14px; border-radius: var(--radius-md);">
+            <div style="font-size: 11px; text-transform: uppercase; color: var(--status-warning); font-weight: 700;">Consent Protocol</div>
+            <div style="font-size: 13px; font-weight: 600; margin-top: 2px;">ABDM / DPDP Act 2023</div>
+          </div>
+        </div>
+
+        <div style="font-size: 12px; color: var(--text-muted); border-left: 2px solid var(--brand-teal); padding-left: 10px; margin-top: 8px;">
+          <strong>Panimalar Engineering College</strong> · Research prototype for clinical evaluation. Synthetic de-identified patient data compliant with MIMIC-III benchmark guidelines.
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Login Card -->
+      <div class="login-card">
+        
+        <!-- Portal Nav Tabs -->
+        <div class="portal-nav-tabs">
+          <button class="portal-nav-tab active" id="tab-btn-id">
+            <span>🔑</span> 9-Digit ID Login
+          </button>
+          <button class="portal-nav-tab" id="tab-btn-demo">
+            <span>⚡</span> 1-Click Demo Profiles
+          </button>
+          <button class="portal-nav-tab" id="tab-btn-register">
+            <span>🆔</span> Generate New ID
+          </button>
+        </div>
+
+        <!-- ==============================================================
+             PANEL 1: 9-Digit Unique ID Login Form
+             ============================================================== -->
+        <div id="panel-id-login">
+          <form id="form-unique-id-login" onsubmit="return false;">
+            
+            <!-- 9-Digit Unique ID Input Field -->
+            <div class="unique-id-input-wrap">
+              <div class="unique-id-label-row">
+                <label for="input-unique-id">9-Digit Unique Health ID (UHID / Staff ID)</label>
+                <span class="id-digit-counter" id="id-counter">0 / 9 Digits</span>
+              </div>
+              <input 
+                type="text" 
+                id="input-unique-id" 
+                class="id-input-box" 
+                placeholder="984-210-412" 
+                maxlength="11" 
+                autocomplete="off"
+                autofocus
+              >
+              <div class="id-helper-text">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                <span>Format: 9 numerical digits (e.g., <strong>984-210-412</strong>)</span>
+              </div>
+            </div>
+
+            <!-- Role Selection -->
+            <div class="auth-form-group">
+              <label class="auth-label" for="select-role">Clinical Role (RBAC Privilege)</label>
+              <select id="select-role" class="auth-select">
+                <option value="patient">Patient Self-Care Profile</option>
+                <option value="doctor" selected>Attending Physician / Cardiologist</option>
+                <option value="nurse">Clinical Inpatient Nurse (Ward 3B)</option>
+                <option value="admin">Chief Medical Compliance Officer (Admin)</option>
+              </select>
+            </div>
+
+            <!-- Security PIN / Password -->
+            <div class="auth-form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label class="auth-label" for="input-pin" style="margin-bottom: 0;">Security PIN / Password</label>
+                <span style="font-size: 11px; color: var(--brand-cyan);">Default PIN: 1234</span>
+              </div>
+              <input type="password" id="input-pin" class="auth-input" placeholder="Enter 4-digit PIN or password" value="1234">
+            </div>
+
+            <!-- 2FA OTP Toggle Checkbox -->
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 13px; color: var(--text-secondary);">
+              <input type="checkbox" id="check-2fa" checked style="accent-color: var(--brand-cyan); cursor: pointer;">
+              <label for="check-2fa" style="cursor: pointer;">
+                Require 2-Factor Mobile OTP Verification (DPDP Act Sec. 8)
+              </label>
+            </div>
+
+            <!-- 2FA OTP Verification Panel (Simulated) -->
+            <div id="otp-panel" class="otp-panel active">
+              <div class="otp-header">
+                <span style="font-weight: 700; color: var(--text-main);">One-Time Password (OTP) Verification</span>
+                <span style="color: var(--text-muted);">Step 2 of 2</span>
+              </div>
+              <div class="otp-sms-banner">
+                <span>📲 Simulated SMS Received: Code <strong>492815</strong></span>
+                <button type="button" id="btn-autofill-otp" class="btn-link" style="font-size: 11px; color: var(--brand-emerald);">
+                  Auto-Fill
+                </button>
+              </div>
+              <div class="otp-inputs-row">
+                <input type="text" class="otp-digit" maxlength="1" value="4">
+                <input type="text" class="otp-digit" maxlength="1" value="9">
+                <input type="text" class="otp-digit" maxlength="1" value="2">
+                <input type="text" class="otp-digit" maxlength="1" value="8">
+                <input type="text" class="otp-digit" maxlength="1" value="1">
+                <input type="text" class="otp-digit" maxlength="1" value="5">
+              </div>
+              <div style="font-size: 11px; color: var(--text-muted); text-align: center;">
+                Code expires in <span id="otp-timer">04:52</span> minutes. Securely generated via HSM.
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="button" id="btn-submit-login" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 15px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><polyline points="10 17 15 12 10 7"></polyline><line x1="15" y1="12" x2="3" y2="12"></line></svg>
+              <span>Authenticate & Access Health Records</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- ==============================================================
+             PANEL 2: 1-Click Demo Profiles
+             ============================================================== -->
+        <div id="panel-demo-login" style="display: none;">
+          <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
+            Select any pre-configured clinical profile below to test with a certified 9-digit Unique Health ID:
+          </p>
+          <div id="demo-users-container" class="demo-users-grid"></div>
+        </div>
+
+        <!-- ==============================================================
+             PANEL 3: Register & Generate 9-Digit Unique ID
+             ============================================================== -->
+        <div id="panel-register-id" style="display: none;">
+          <form id="form-register-id" onsubmit="return false;">
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">
+              Enroll a new synthetic patient into the IntelliHealth 360 network with an automated 9-digit cryptographic ID:
+            </p>
+
+            <div class="auth-form-group">
+              <label class="auth-label">Patient Full Name</label>
+              <input type="text" id="reg-name" class="auth-input" placeholder="e.g. Karthik Rajan" value="Karthik Rajan">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <div class="auth-form-group">
+                <label class="auth-label">Age</label>
+                <input type="number" id="reg-age" class="auth-input" value="52" min="1" max="110">
+              </div>
+              <div class="auth-form-group">
+                <label class="auth-label">Gender</label>
+                <select id="reg-gender" class="auth-select">
+                  <option value="Male" selected>Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label class="auth-label">Primary Clinical Condition</label>
+              <input type="text" id="reg-condition" class="auth-input" value="Essential Hypertension · Dyslipidemia" placeholder="e.g. Type 2 Diabetes">
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-bottom: 14px;">
+              <button type="button" id="btn-generate-uhid" class="btn btn-secondary" style="flex: 1; font-size: 13px;">
+                🎲 Generate 9-Digit ID
+              </button>
+            </div>
+
+            <!-- Smart Health ID Card Preview -->
+            <div id="smart-card-preview" class="smart-health-card">
+              <div class="smart-card-header">
+                <div>
+                  <span style="font-size: 10px; text-transform: uppercase; font-weight: 700; color: #38bdf8; letter-spacing: 0.05em;">IntelliHealth 360 · ABDM Stack</span>
+                  <div style="font-size: 16px; font-weight: 800;" id="card-holder-name">Karthik Rajan</div>
+                </div>
+                <span class="badge-pill" style="font-size: 10px;">VALID</span>
+              </div>
+              <div class="smart-card-chip"></div>
+              <div style="font-size: 10px; color: var(--text-muted); text-transform: uppercase;">9-Digit Unique Health ID (UHID)</div>
+              <div class="smart-card-id-num" id="card-id-display">842-190-337</div>
+              <div class="smart-card-footer">
+                <div>
+                  <div style="color: var(--text-muted);">Health Profile</div>
+                  <div id="card-condition-display">Hypertension & Dyslipidemia</div>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 10px; text-align: right; color: #34d399;">
+                  QR: VERIFIED<br>
+                  PANIMALAR HEALTH
+                </div>
+              </div>
+            </div>
+
+            <button type="button" id="btn-register-submit" class="btn btn-primary" style="width: 100%; margin-top: 18px; padding: 12px;">
+              Register & Launch Console
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast Notification Stack -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const data = window.IH360_DATA || {};
+      const users = data.SYSTEM_USERS || [];
+
+      // Theme toggle
+      const savedTheme = localStorage.getItem('ih360_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.getElementById('theme-toggle').onclick = () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('ih360_theme', next);
+      };
+
+      // Toast helper
+      const showToast = (msg, type = 'info') => {
+        const container = document.getElementById('toast-container');
+        const t = document.createElement('div');
+        t.className = `toast ${type}`;
+        t.innerHTML = `<span>${type === 'success' ? '✅' : type === 'critical' ? '🚨' : 'ℹ️'}</span> <span>${msg}</span>`;
+        container.appendChild(t);
+        setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 3500);
+      };
+
+      // Navigation tabs
+      const tabBtnId = document.getElementById('tab-btn-id');
+      const tabBtnDemo = document.getElementById('tab-btn-demo');
+      const tabBtnRegister = document.getElementById('tab-btn-register');
+      const panelId = document.getElementById('panel-id-login');
+      const panelDemo = document.getElementById('panel-demo-login');
+      const panelRegister = document.getElementById('panel-register-id');
+
+      const switchTab = (activeBtn, activePanel) => {
+        [tabBtnId, tabBtnDemo, tabBtnRegister].forEach(b => b.classList.remove('active'));
+        [panelId, panelDemo, panelRegister].forEach(p => p.style.display = 'none');
+        activeBtn.classList.add('active');
+        activePanel.style.display = 'block';
+      };
+
+      tabBtnId.onclick = () => switchTab(tabBtnId, panelId);
+      tabBtnDemo.onclick = () => switchTab(tabBtnDemo, panelDemo);
+      tabBtnRegister.onclick = () => switchTab(tabBtnRegister, panelRegister);
+
+      // 9-Digit input formatting logic
+      const idInput = document.getElementById('input-unique-id');
+      const idCounter = document.getElementById('id-counter');
+
+      const format9Digit = (raw) => {
+        const cleaned = raw.replace(/\D/g, '').slice(0, 9);
+        let formatted = '';
+        if (cleaned.length > 0) formatted += cleaned.slice(0, 3);
+        if (cleaned.length >= 4) formatted += '-' + cleaned.slice(3, 6);
+        if (cleaned.length >= 7) formatted += '-' + cleaned.slice(6, 9);
+        return { formatted, digitsCount: cleaned.length, rawDigits: cleaned };
+      };
+
+      idInput.addEventListener('input', (e) => {
+        const { formatted, digitsCount } = format9Digit(e.target.value);
+        e.target.value = formatted;
+        idCounter.textContent = `${digitsCount} / 9 Digits`;
+        idCounter.classList.toggle('valid', digitsCount === 9);
+      });
+
+      // Default sample 9-digit ID
+      idInput.value = '984-210-412';
+      idCounter.textContent = '9 / 9 Digits';
+      idCounter.classList.add('valid');
+
+      // 2FA toggle
+      const check2fa = document.getElementById('check-2fa');
+      const otpPanel = document.getElementById('otp-panel');
+      check2fa.onchange = () => {
+        otpPanel.classList.toggle('active', check2fa.checked);
+      };
+
+      document.getElementById('btn-autofill-otp').onclick = () => {
+        const digits = ['4', '9', '2', '8', '1', '5'];
+        document.querySelectorAll('.otp-digit').forEach((d, i) => d.value = digits[i]);
+        showToast('Simulated 2FA OTP auto-filled', 'success');
+      };
+
+      // Populate demo users list
+      const demoContainer = document.getElementById('demo-users-container');
+      demoContainer.innerHTML = users.map(u => `
+        <div class="demo-user-card" data-id="${u.uniqueIdFormatted}" data-role="${u.role}" data-patient-idx="${u.patientIndex}">
+          <div class="demo-user-left">
+            <div class="demo-user-avatar">${u.avatar}</div>
+            <div>
+              <div class="demo-user-name">${u.name}</div>
+              <div class="demo-user-role">${u.roleLabel}</div>
+            </div>
+          </div>
+          <div class="demo-user-id-badge">${u.uniqueIdFormatted}</div>
+        </div>
+      `).join('');
+
+      demoContainer.querySelectorAll('.demo-user-card').forEach(card => {
+        card.onclick = () => {
+          const id = card.dataset.id;
+          const role = card.dataset.role;
+          const patientIdx = card.dataset.patientIdx;
+          
+          idInput.value = id;
+          document.getElementById('select-role').value = role;
+          
+          showToast(`Selected demo credentials for ${id}`, 'info');
+          authenticateUser(id, role, parseInt(patientIdx, 10));
+        };
+      });
+
+      // Generator for new 9-digit ID
+      const random9Digit = () => {
+        const n = Math.floor(100000000 + Math.random() * 900000000).toString();
+        return `${n.slice(0,3)}-${n.slice(3,6)}-${n.slice(6,9)}`;
+      };
+
+      const cardIdDisplay = document.getElementById('card-id-display');
+      const cardHolderName = document.getElementById('card-holder-name');
+      const cardConditionDisplay = document.getElementById('card-condition-display');
+      const regName = document.getElementById('reg-name');
+      const regCondition = document.getElementById('reg-condition');
+
+      document.getElementById('btn-generate-uhid').onclick = () => {
+        const newId = random9Digit();
+        cardIdDisplay.textContent = newId;
+        cardHolderName.textContent = regName.value || 'Karthik Rajan';
+        cardConditionDisplay.textContent = regCondition.value || 'General Telemetry';
+        showToast(`Generated new 9-digit Unique Health ID: ${newId}`, 'success');
+      };
+
+      regName.oninput = () => cardHolderName.textContent = regName.value || 'Karthik Rajan';
+      regCondition.oninput = () => cardConditionDisplay.textContent = regCondition.value || 'General Telemetry';
+
+      document.getElementById('btn-register-submit').onclick = () => {
+        const id = cardIdDisplay.textContent;
+        showToast(`New patient registered with 9-digit ID: ${id}`, 'success');
+        authenticateUser(id, 'patient', 0, regName.value);
+      };
+
+      // Submission logic
+      const submitBtn = document.getElementById('btn-submit-login');
+      submitBtn.onclick = () => {
+        const raw = idInput.value;
+        const { rawDigits, digitsCount } = format9Digit(raw);
+        if (digitsCount !== 9) {
+          showToast('Please enter a valid 9-digit Unique Health ID', 'critical');
+          idInput.focus();
+          return;
+        }
+
+        const role = document.getElementById('select-role').value;
+        authenticateUser(raw, role);
+      };
+
+      function authenticateUser(idFormatted, role, patientIndex = 0, customName = null) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<span>⏳ Verifying 9-Digit Cryptographic ID...</span>`;
+
+        // Check if matching in database
+        const cleanId = idFormatted.replace(/\D/g, '');
+        const matched = users.find(u => u.uniqueId === cleanId) || {
+          name: customName || (role === 'doctor' ? 'Dr. Staff Physician' : 'Authenticated Patient'),
+          role: role,
+          uniqueIdFormatted: idFormatted,
+          patientIndex: patientIndex
+        };
+
+        setTimeout(() => {
+          submitBtn.innerHTML = `<span>🔐 Establishing Zero-Trust Session (AES-256)...</span>`;
+        }, 500);
+
+        setTimeout(() => {
+          // Store authenticated state
+          const authSession = {
+            uniqueId: cleanId,
+            uniqueIdFormatted: idFormatted,
+            name: matched.name,
+            role: role,
+            patientIndex: matched.patientIndex || 0,
+            loginTime: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+          };
+
+          localStorage.setItem('ih360_auth_user', JSON.stringify(authSession));
+          showToast(`Welcome, ${matched.name}! Redirecting to Live Console...`, 'success');
+          
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 900);
+        }, 1200);
+      }
+    });
+  </script>
+</body>
+</html>
